@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 import { useNavigation } from '@react-navigation/core';
 
 export function Signin (props){
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [validEmail, setValidEmail] = useState()
     const[validPassword, setValidPassword] = useState()
 
@@ -25,9 +25,13 @@ export function Signin (props){
         }
     }, [email,password])
 
+    useEffect ( () => {
+        if (props.auth) {
+            navigation.reset({index:0, routes:[{name: "Home"}]})
+        }
+    }, [props.auth])
+
     const navigation = useNavigation()
-
-
     return(
     <View>
         <Text style={signInStyles.heading}>Sign In to your Account</Text>

@@ -11,6 +11,12 @@ export function Signup (props){
 
     const navigation = useNavigation()
 
+    useEffect(() => {
+        if (props.auth){
+            navigation.reset({index:0, routes:[{name: "Home"}]})
+        }
+    }, [props.auth])
+
     const HandleEmail = (emailVal) => {
 
         if (emailVal.indexOf('@') >  0){
