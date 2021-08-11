@@ -1,18 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 
 export function Signin (props){
-    
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    const [validEmail, setValidEmail] = useState()
+    const[validPassword, setValidPassword] = useState()
+
+    useEffect ( () => {
+        const emailNoSpaces = email.split(' ').join('').length
+
+        if (email.length >= 5 && email.length === emailNoSpaces){
+            setValidEmail( true)
+        }
+        else {
+            setValidEmail(false)
+        }
+        if (password.length >= 6){
+            setValidPassword (true)
+        }
+        else {
+            setValidPassword(false)
+        }
+    }, [email,password])
+
+    const navigation = useNavigation()
+
 
     return(
     <View>
         <Text style={signInStyles.heading}>Sign In to your Account</Text>
         <Text>Email:</Text>
-        <TextInput style={signInStyles.input} />
+        <TextInput style={signInStyles.input} 
+        onChangeText={(val) => setEmail(val)}/>
         <Text>Password:</Text>
-        <TextInput style={signInStyles.input} secureTextEntry={true}/>
-        <TouchableOpacity style={signInStyles.signInBtn}><Text style={signInStyles.btnText}>Sign In</Text></TouchableOpacity>
-        <TouchableOpacity onPress={props.toggle}>
+        <TextInput style={signInStyles.input} 
+        secureTextEntry={true} onChangeText={(val) => setPassword(val)} />
+        <TouchableOpacity 
+        style={(!validEmail || !validPassword) ? signInStyles.btnDisabled :  signInStyles.signInBtn} 
+        onPress={()=> props.handler}
+        disabled = {(!validEmail || !validPassword) ? true:false}
+        >
+            <Text style={signInStyles.btnText}>Sign In</Text>
+            </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
             <Text>Don't have an account?</Text>
             <Text style={signInStyles.signUp}>Create a new account</Text>
         </TouchableOpacity>
@@ -45,5 +77,11 @@ btnText:{
 signUp:{
     fontWeight: 'bold',
     color: '#008CBA',
+},
+btnDisabled: {
+    backgroundColor: '#cccccc',
+    padding: 3,
+    marginVertical: 5,
+    borderRadius: 15,
 },
 });
