@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 import { useNavigation } from '@react-navigation/core';
 
 export function Signin (props){
+
+    const navigation = useNavigation()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [validEmail, setValidEmail] = useState()
@@ -31,7 +33,10 @@ export function Signin (props){
         }
     }, [props.auth])
 
-    const navigation = useNavigation()
+    const SignIn = () => {
+        props.handler(email, password)
+    }
+
     return(
     <View>
         <Text style={signInStyles.heading}>Sign In to your Account</Text>
@@ -43,7 +48,7 @@ export function Signin (props){
         secureTextEntry={true} onChangeText={(val) => setPassword(val)} />
         <TouchableOpacity 
         style={(!validEmail || !validPassword) ? signInStyles.btnDisabled :  signInStyles.signInBtn} 
-        onPress={()=> props.handler}
+        onPress={SignIn}
         disabled = {(!validEmail || !validPassword) ? true:false}
         >
             <Text style={signInStyles.btnText}>Sign In</Text>
