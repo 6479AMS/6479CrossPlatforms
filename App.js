@@ -16,16 +16,16 @@ if ( !firebase.apps.length){
 }
 
 export default function App() {
-
   const [auth, setAuth] = useState(false);
-  //const navigation = useNavigation()
-
-
-  //  useEffect( () => {
-  //    if ( auth ){
-  //      navigation.navigate("Home") 
-  //    }
-  //  }, [auth])
+  
+  firebase.auth().onAuthStateChanged((user) =>{
+    if ( user ){
+      setAuth( true )
+    }
+    else {
+      setAuth( false )
+    }
+  })
 
   const HandleSignUp = (email, password) => {
     //console.log(email, password)
@@ -45,6 +45,16 @@ export default function App() {
     } )
     .catch((error) => console.log(error))
   } 
+
+  const HandleSignOut = () => {
+    firebase.auth().signOut()
+    .then( () => {
+      setAuth(false)
+    } )
+    .catch((error) => {
+      console.log(error)
+    })
+  }
 
 
   const ToggleSignUp = () => {
@@ -66,7 +76,7 @@ const Stack = createStackNavigator();
               <Stack.Screen name="SignUp">
                 {(props) => <Signup {...props} handler={HandleSignUp} auth={auth}/>}
               </Stack.Screen>
-              <Stack.Screen name="Home" component={Home} />
+              <Stack.Screen name="Home" component={Home} options={{title: "Wecome"}}/>
             </Stack.Navigator>
         </NavigationContainer>
         )
