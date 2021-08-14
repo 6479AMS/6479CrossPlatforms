@@ -49,7 +49,7 @@ export function Home(props) {
 
     return (
         <View style={HomeStyles.pageContainer}>
-            <Text style={{textAlign: 'center'}}>Welcome</Text>
+            <Text style={{textAlign: 'center'}}>Get Familiar</Text>
             <AliceCarousel autoPlay autoPlayInterval="3000">
                 <img src={image1} className="sliderimg"/>
                 <img src={image2} className="sliderimg"/>
