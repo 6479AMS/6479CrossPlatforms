@@ -7,9 +7,11 @@ import { firebaseConfig } from './config';
 import   firebase from 'firebase';
 import { useNavigation } from '@react-navigation/core';
 
+
 import { Signin } from './components/SignIn';
 import { Signup } from './components/SignUp';
 import { Home } from './components/Home';
+import { reject } from 'async';
 
 if ( !firebase.apps.length){
   firebase.initializeApp( firebaseConfig );
@@ -30,11 +32,26 @@ export default function App() {
     }
   })
 
+
   useEffect( () => {
     if ( !data) {
       readData()
     }
   })
+
+  const addData = ( data ) => {
+    return new Promise((resolve, reject) => {
+      if ( !auth ) {
+        reject("User cannot be authenticated.")
+      } else
+      {
+        const ref = db.collection('users').doc(user.uid).collection('read')
+        ref.add(data)
+        .then(() => {resolve(true)})
+        .catch((error) => {reject(error)})
+      }
+    })
+  }
 
   const HandleSignUp = (email, password) => {
     //console.log(email, password)
@@ -70,6 +87,7 @@ export default function App() {
   }
 
 
+
   const readData = () => {
     let countries = []
     db.collection('countries').get()
@@ -96,9 +114,10 @@ export default function App() {
                 {(props) => <Signup {...props} handler={HandleSignUp} auth={auth}/>}
               </Stack.Screen>
               <Stack.Screen name="Home"  
-              options={{title: "Wecome"}}
+              options={{title: "Get Familiar"}}
               >
-                { (props) => <Home {...props} signout = {HandleSignOut} listData={data}/> }
+                { (props) => <Home {...props} 
+                signout = {HandleSignOut} auth={auth} listData={data}  add={addData}/> }
               </Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
