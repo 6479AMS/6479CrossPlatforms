@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import { Logout } from './LogOut';
 
 export function Home(props) {
 
     const navigation = useNavigation()
+
+    navigation.setOptions({
+        headerRight: props => 
+            <Logout {...props} handler={Signout}/>
+        
+    })
+
     const Signout = () => {
 
         props.signout()
         .then( (result) => {
             if (result === true) {
-                navigation.reset({index:0, routes:[{name: "SignUp"}]})
+                navigation.reset({index:0, routes:[{name: "SignIn"}]})
             }
         })
         .catch( (error) => console.log(error) )
