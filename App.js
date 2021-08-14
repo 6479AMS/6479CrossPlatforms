@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { firebaseConfig } from './config';
-import  firebase from 'firebase'
+import   firebase from 'firebase';
 import { useNavigation } from '@react-navigation/core';
 
 import { Signin } from './components/SignIn';
@@ -17,6 +17,9 @@ if ( !firebase.apps.length){
 
 export default function App() {
   const [auth, setAuth] = useState(false);
+  const [data, setData] = useState();
+
+  const db = firebase.firestore()
   
   firebase.auth().onAuthStateChanged((user) =>{
     if ( user ){
@@ -24,6 +27,12 @@ export default function App() {
     }
     else {
       setAuth( false )
+    }
+  })
+
+  useEffect( () => {
+    if ( !data) {
+      readData()
     }
   })
 
@@ -61,15 +70,21 @@ export default function App() {
   }
 
 
-  // const ToggleSignUp = () => {
-  //   if (signup == true){
-  //     setSignUp( false)
-  //   } else {
-  //     setSignUp( true)
-  //   }
-  // }
+  const readData = () => {
+    let countries = []
+    db.collection('countries').get()
+    .then( ( snapshot ) => {
+        snapshot.forEach( (doc) => {
+          let country = doc.data()
+          country.id = doc.id;
+          countries.push(country)
+        })
+    })
 
-const Stack = createStackNavigator();
+    setData(countries)
+  }
+
+  const Stack = createStackNavigator();
 
         return(
         <NavigationContainer>
@@ -83,7 +98,7 @@ const Stack = createStackNavigator();
               <Stack.Screen name="Home"  
               options={{title: "Wecome"}}
               >
-                { (props) => <Home {...props} signout = {HandleSignOut}/> }
+                { (props) => <Home {...props} signout = {HandleSignOut} listData={data}/> }
               </Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
