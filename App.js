@@ -114,7 +114,20 @@ export default function App() {
                 {(props) => <Signup {...props} handler={HandleSignUp} auth={auth}/>}
               </Stack.Screen>
               <Stack.Screen name="Home"  
-              options={{title: "Get Familiar"}}
+              options={{ 
+                title: 'Get Familiar',
+                 headerStyle:{
+                   textAlign: 'center',
+                   //flex:1,
+                   padding:10,
+                   fontWeight: 'bold',
+                    backgroundColor: '#242B2E',
+                  },
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                  },
+                 }}
               >
                 { (props) => <Home {...props} 
                 signout = {HandleSignOut} auth={auth} listData={data}  add={addData}/> }

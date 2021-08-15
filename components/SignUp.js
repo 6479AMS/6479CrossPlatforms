@@ -72,11 +72,11 @@ input: {
     fontSize:18,
     borderColor: '#cccccc',
     borderWidth: 2,
-    borderRadius: 5,
+    borderRadius: 10,
 },
 signUpBtn: {
     backgroundColor: '#008CBA',
-    padding: 3,
+    padding: 10,
     marginVertical: 5,
     borderRadius: 15,
 },

@@ -11,9 +11,28 @@ import image3 from './flagImg/ecuador.png'
 import image4 from './flagImg/japan.png'
 import image5 from './flagImg/nepal.png'
 import image6 from './flagImg/thailand.png'
+import '@fontsource/roboto';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
 
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+      borderRadius:10,
+     // maxWidth: 360,
+      backgroundColor: theme.palette.background.paper,
+    },
+  }));
 
 export function Home(props) {
+
+    const classes = useStyles();
 
     const navigation = useNavigation()
 
@@ -49,8 +68,7 @@ export function Home(props) {
 
     return (
         <View style={HomeStyles.pageContainer}>
-            <Text style={{textAlign: 'center'}}>Get Familiar</Text>
-            <AliceCarousel autoPlay autoPlayInterval="3000">
+            <AliceCarousel autoPlay autoPlayInterval="3000" >
                 <img src={image1} className="sliderimg"/>
                 <img src={image2} className="sliderimg"/>
                 <img src={image3} className="sliderimg"/>
@@ -58,13 +76,60 @@ export function Home(props) {
                 <img src={image5} className="sliderimg"/>
                 <img src={image6} className="sliderimg"/>
             </AliceCarousel>
+
+            <List className={classes.root}>
+      <ListItem>
+        <ListItemAvatar>
+        <Avatar variant="square" src={image1} className={classes.square} />
+        </ListItemAvatar>
+        <ListItemText primary="Argentina" secondary="South America" />
+      </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+        <Avatar variant="square" src={image2} className={classes.square} />
+        </ListItemAvatar>
+        <ListItemText primary="Brazil" secondary="South America" />
+      </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+        <Avatar variant="square" src={image3} className={classes.square} />
+        </ListItemAvatar>
+        <ListItemText primary="Ecuador" secondary="South America" />
+      </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+        <Avatar variant="square" src={image4} className={classes.square} />
+        </ListItemAvatar>
+        <ListItemText primary="Japan" secondary="Asia" />
+      </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+        <Avatar variant="square" src={image5} className={classes.square} />
+        </ListItemAvatar>
+        <ListItemText primary="Nepal" secondary="Asia" />
+      </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+        <Avatar variant="square" src={image6} className={classes.square} />
+        </ListItemAvatar>
+        <ListItemText primary="Thailand" secondary="Asia" />
+      </ListItem>
+      
+    </List>
+
         </View>
     )
 }
 
 const HomeStyles = StyleSheet.create({
     pageContainer: {
-        minHeight: 300,
-        backgroundColor: 'lightblue',
+        
+        backgroundColor: '#CAD5E2',
+    },
+    listItem: {
+        borderRadius:15,
+    },
+    carousel:{
+        borderRadius:10,
     },
 })

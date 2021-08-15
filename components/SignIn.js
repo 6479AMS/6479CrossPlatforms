@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import '@fontsource/roboto';
 
 export function Signin (props){
+
+   
 
     const navigation = useNavigation()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [validEmail, setValidEmail] = useState()
     const[validPassword, setValidPassword] = useState()
+
+     
 
     useEffect ( () => {
         const emailNoSpaces = email.split(' ').join('').length
@@ -57,6 +64,7 @@ export function Signin (props){
             <Text>Don't have an account?</Text>
             <Text style={signInStyles.signUp}>Create a new account</Text>
         </TouchableOpacity>
+        
     </View>
 )
 }
@@ -69,7 +77,7 @@ input: {
     fontSize:18,
     borderColor: '#cccccc',
     borderWidth: 2,
-    borderRadius: 5,
+    borderRadius: 10,
 },
 signInBtn: {
     backgroundColor: '#008CBA',
