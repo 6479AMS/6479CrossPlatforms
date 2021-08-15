@@ -45,7 +45,7 @@ export function Signin (props){
     }
 
     return(
-    <View>
+    <View style={signInStyles.container}>
         <Text style={signInStyles.heading}>Sign In to your Account</Text>
         <Text>Email:</Text>
         <TextInput style={signInStyles.input} 
@@ -70,20 +70,31 @@ export function Signin (props){
 }
 
 const signInStyles = StyleSheet.create({
+    container: {
+        marginHorizontal: 20,
+        marginVertical: 30,
+        backgroundColor: '#CAD5E2',
+        paddingVertical:20,
+        paddingHorizontal: 10,
+        borderRadius:20,
+      },
 heading: {
     fontSize: 22,
+    padding:10,
 },
 input: {
     fontSize:18,
-    borderColor: '#cccccc',
     borderWidth: 2,
     borderRadius: 10,
+    borderColor: 'black',
 },
 signInBtn: {
     backgroundColor: '#008CBA',
     padding: 3,
     marginVertical: 5,
     borderRadius: 15,
+    padding:10,
+    borderColor:'black',
 },
 btnText:{
     color : 'white' , 

@@ -37,7 +37,7 @@ export function Signup (props){
     }
 
     return(
-    <View>
+    <View style={signUpStyles.container}>
         <Text style={signUpStyles.heading}>Create a New Account</Text>
         <Text>Email:</Text>
         <TextInput 
@@ -65,12 +65,21 @@ export function Signup (props){
 }
 
 const signUpStyles = StyleSheet.create({
+    container: {
+        marginHorizontal: 20,
+        marginVertical: 30,
+        backgroundColor: '#CAD5E2',
+        paddingVertical:20,
+        paddingHorizontal: 10,
+        borderRadius:20,
+      },
 heading: {
     fontSize: 22,
+    padding:10,
 },
 input: {
     fontSize:18,
-    borderColor: '#cccccc',
+    borderColor: 'black',
     borderWidth: 2,
     borderRadius: 10,
 },
@@ -79,6 +88,7 @@ signUpBtn: {
     padding: 10,
     marginVertical: 5,
     borderRadius: 15,
+    borderColor: 'black',
 },
 btnText:{
     color : 'white' , 

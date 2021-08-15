@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Logout } from './LogOut';
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
@@ -31,16 +32,27 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export function Home(props) {
-
+    const [user,setUser] = useState();
     const classes = useStyles();
 
     const navigation = useNavigation()
 
-    navigation.setOptions({
-        headerRight: props => 
-            <Logout {...props} handler={Signout}/>
+    // navigation.setOptions({
+    //     headerRight: props => 
+    //         <Logout {...props} handler={Signout}/>
         
-    })
+    // })
+    useEffect( () => {
+        if( props.auth ) {
+          setUser( props.auth )
+        }
+        else {
+          setUser(null)
+        }
+        navigation.setOptions({
+          headerRight: props => <Logout {...props} handler={Signout}/>
+        })
+      })
 
     const Signout = () => {
 
@@ -68,6 +80,7 @@ export function Home(props) {
 
     return (
         <View style={HomeStyles.pageContainer}>
+            <Greeting />
             <AliceCarousel autoPlay autoPlayInterval="3000" >
                 <img src={image1} className="sliderimg"/>
                 <img src={image2} className="sliderimg"/>
@@ -78,42 +91,54 @@ export function Home(props) {
             </AliceCarousel>
 
             <List className={classes.root}>
-      <ListItem>
+        <TouchableOpacity onPress={() => navigation.navigate("Country")}>
+      <ListItem >
         <ListItemAvatar>
         <Avatar variant="square" src={image1} className={classes.square} />
         </ListItemAvatar>
         <ListItemText primary="Argentina" secondary="South America" />
       </ListItem>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Country")}>
       <ListItem>
         <ListItemAvatar>
         <Avatar variant="square" src={image2} className={classes.square} />
         </ListItemAvatar>
         <ListItemText primary="Brazil" secondary="South America" />
       </ListItem>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Country")}>
       <ListItem>
         <ListItemAvatar>
         <Avatar variant="square" src={image3} className={classes.square} />
         </ListItemAvatar>
         <ListItemText primary="Ecuador" secondary="South America" />
       </ListItem>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Country")}>
       <ListItem>
         <ListItemAvatar>
         <Avatar variant="square" src={image4} className={classes.square} />
         </ListItemAvatar>
         <ListItemText primary="Japan" secondary="Asia" />
       </ListItem>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Country")}>
       <ListItem>
         <ListItemAvatar>
         <Avatar variant="square" src={image5} className={classes.square} />
         </ListItemAvatar>
         <ListItemText primary="Nepal" secondary="Asia" />
       </ListItem>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Country")}>
       <ListItem>
         <ListItemAvatar>
         <Avatar variant="square" src={image6} className={classes.square} />
         </ListItemAvatar>
         <ListItemText primary="Thailand" secondary="Asia" />
       </ListItem>
+      </TouchableOpacity>
       
     </List>
 

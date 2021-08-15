@@ -7,6 +7,7 @@ import { firebaseConfig } from './config';
 import   firebase from 'firebase';
 import { useNavigation } from '@react-navigation/core';
 
+import { Country1 } from './components/Country';
 
 import { Signin } from './components/SignIn';
 import { Signup } from './components/SignUp';
@@ -94,7 +95,7 @@ export default function App() {
     .then( ( snapshot ) => {
         snapshot.forEach( (doc) => {
           let country = doc.data()
-          country.id = doc.id;
+          country.name = doc.id;
           countries.push(country)
         })
     })
