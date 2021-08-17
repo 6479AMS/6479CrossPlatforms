@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 import { Logout } from './LogOut';
+import { Country1 } from './Country';
+import { Country2 } from './Country2';
+import { Country3 } from './Country3';
+import { Country4 } from './Country4';
+import { Country5 } from './Country5';
+import { Country6 } from './Country6';
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 import './App.css'
@@ -22,6 +30,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
@@ -31,9 +40,15 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
+
+      const Drawer = createDrawerNavigator();
+      const Stack = createStackNavigator();
+
 export function Home(props) {
     const [user,setUser] = useState();
-    const classes = useStyles();
+
+    const [country, setCountry] = useState();
+    
 
     const navigation = useNavigation()
 
@@ -78,9 +93,62 @@ export function Home(props) {
         setDate( selectedDate)
       }
 
+      
+
+      
+
     return (
-        <View style={HomeStyles.pageContainer}>
-            <Greeting />
+      <NavigationContainer independent={true}>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={DrawerRoutes} options= {{
+        headerShown: false
+          }} />
+        <Stack.Screen name="Country" component={Country1} options= {{
+        headerShown: false
+          }}/>
+        <Stack.Screen name="Country2" component={Country2} options= {{
+        headerShown: false
+          }}/>
+          <Stack.Screen name="Country3" component={Country3} options= {{
+        headerShown: false
+          }}/>
+          <Stack.Screen name="Country4" component={Country4} options= {{
+        headerShown: false
+          }}/>
+          <Stack.Screen name="Country5" component={Country5} options= {{
+        headerShown: false
+          }}/>
+          <Stack.Screen name="Country6" component={Country6} options= {{
+        headerShown: false
+          }}/>
+      </Stack.Navigator>
+    </NavigationContainer>  
+    )
+}
+
+function DrawerRoutes() {
+  return(
+
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Country" component={Country1} options={{title: "Argentina"}}/>
+        <Drawer.Screen name="Country2" component={Country2} options={{title: "Brazil"}} />
+        <Drawer.Screen name="Country3" component={Country3} options={{title: "Ecuador"}}/>
+        <Drawer.Screen name="Country4" component={Country4} options={{title: "Japan"}}/>
+        <Drawer.Screen name="Country5" component={Country5} options={{title: "Nepal"}}/>
+        <Drawer.Screen name="Country6" component={Country6} options={{title: "Thailand"}}/>
+      </Drawer.Navigator>
+
+  )
+}
+
+
+
+function HomeScreen({navigation}){
+  const classes = useStyles();
+return(
+<View style={HomeStyles.pageContainer}>
+            
             <AliceCarousel autoPlay autoPlayInterval="3000" >
                 <img src={image1} className="sliderimg"/>
                 <img src={image2} className="sliderimg"/>
@@ -99,7 +167,7 @@ export function Home(props) {
         <ListItemText primary="Argentina" secondary="South America" />
       </ListItem>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Country")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Country2")}>
       <ListItem>
         <ListItemAvatar>
         <Avatar variant="square" src={image2} className={classes.square} />
@@ -107,7 +175,7 @@ export function Home(props) {
         <ListItemText primary="Brazil" secondary="South America" />
       </ListItem>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Country")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Country3")}>
       <ListItem>
         <ListItemAvatar>
         <Avatar variant="square" src={image3} className={classes.square} />
@@ -115,7 +183,7 @@ export function Home(props) {
         <ListItemText primary="Ecuador" secondary="South America" />
       </ListItem>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Country")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Country4")}>
       <ListItem>
         <ListItemAvatar>
         <Avatar variant="square" src={image4} className={classes.square} />
@@ -123,7 +191,7 @@ export function Home(props) {
         <ListItemText primary="Japan" secondary="Asia" />
       </ListItem>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Country")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Country5")}>
       <ListItem>
         <ListItemAvatar>
         <Avatar variant="square" src={image5} className={classes.square} />
@@ -131,7 +199,7 @@ export function Home(props) {
         <ListItemText primary="Nepal" secondary="Asia" />
       </ListItem>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Country")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Country6")}>
       <ListItem>
         <ListItemAvatar>
         <Avatar variant="square" src={image6} className={classes.square} />
@@ -143,12 +211,13 @@ export function Home(props) {
     </List>
 
         </View>
-    )
+)
 }
 
 const HomeStyles = StyleSheet.create({
     pageContainer: {
-        
+      maxHeight: "100%",
+        overflow: 'auto',
         backgroundColor: '#CAD5E2',
     },
     listItem: {

@@ -2,13 +2,14 @@ import React, { useState, useEffect, Component } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 import './App.css'
-import flagImg1 from './flagImg/argentina.png'
+
+import flagImg2 from './flagImg/brazil.png'
 import '@fontsource/roboto';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import argentina1 from './countryImages/Argentina/buenosaires.jpg';
-import argentina2 from './countryImages/Argentina/bariloche.jpg';
-import argentina3 from './countryImages/Argentina/patagonia.jpg';
+import brazil1 from './countryImages/Brazil/copacabana.jpg';
+import brazil2 from './countryImages/Brazil/manaus.jpg';
+import brazil3 from './countryImages/Brazil/rio.jpg';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -19,7 +20,6 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export function Country1() {
+  export function Country2() {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -61,21 +61,21 @@ export function Country1() {
             <Card className={classes.root}>
       <CardHeader
         avatar={
-            <Avatar variant="square" src={flagImg1} className={classes.square} />
+            <Avatar variant="square" src={flagImg2} className={classes.square} />
           
         }
         
-        title="Argentina"
+        title="Brazil"
         
       />
       <CardMedia
         className={classes.media}
-        image={argentina1}
-        title="Buenos Aires"
+        image={brazil1}
+        title="Rio"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        Argentina, officially the largest Argentine Republic, is a country in the southern half of South America. It is the largest Spanish speaking nation in the world.
+        Brazil, official the Federative Republic of Brazil is the largest country in both South America and Latin America. Brazil is the world's fifth largest and sixth-most populous country. It is one of the most culturally diverse nation, due to over a century of mass immigration from the world.
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -95,33 +95,33 @@ export function Country1() {
         <CardContent>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Capital:</Typography>
           <Typography paragraph>
-            Buenos Aires
+            Brasilia
           </Typography>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Handy Phrases:</Typography>
           <Typography variant="h5" paragraph>
-          "Hola, ¿cómo estás?"
+          "Bom dia (Boa Tarde)"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: Hey, How are you?
+            Translation: Good Morning (Good Afternoon)
           </Typography>
           <Typography variant="h5" paragraph>
-          "¿Qué es de tu vida?"
+          "Como vai voce?"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: How is life going?
+            Translation: How are you?
           </Typography>
           <Typography variant="h5" paragraph>
-          "Un picadito"
+          "Obrigado"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: A Football match
+            Translation: Thank You
           </Typography>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Places to Visit:</Typography>
 
           <AliceCarousel borderRaius="10" autoPlay autoPlayInterval="3000" >
-                <img src={argentina1} className="sliderimg"/>
-                <img src={argentina2} className="sliderimg"/>
-                <img src={argentina3} className="sliderimg"/>
+                <img src={brazil1} className="sliderimg"/>
+                <img src={brazil2} className="sliderimg"/>
+                <img src={brazil3} className="sliderimg"/>
             </AliceCarousel>
         </CardContent>
       </Collapse>
@@ -129,4 +129,3 @@ export function Country1() {
         
     )
 }
-

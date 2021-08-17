@@ -7,6 +7,8 @@ import { firebaseConfig } from './config';
 import   firebase from 'firebase';
 import { useNavigation } from '@react-navigation/core';
 
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
 import { Country1 } from './components/Country';
 
 import { Signin } from './components/SignIn';
@@ -105,6 +107,9 @@ export default function App() {
 
   const Stack = createStackNavigator();
 
+  const HomeStack = createStackNavigator();
+  const Drawer = createDrawerNavigator();
+
         return(
         <NavigationContainer>
             <Stack.Navigator initialRouteName="SignUp">
@@ -134,7 +139,11 @@ export default function App() {
                 signout = {HandleSignOut} auth={auth} listData={data}  add={addData}/> }
               </Stack.Screen>
             </Stack.Navigator>
+            
         </NavigationContainer>
+
+        
+        
         )
 }
 const styles = StyleSheet.create({

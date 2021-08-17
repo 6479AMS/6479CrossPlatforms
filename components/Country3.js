@@ -2,13 +2,13 @@ import React, { useState, useEffect, Component } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 import './App.css'
-import flagImg1 from './flagImg/argentina.png'
+import flagImg3 from './flagImg/ecuador.png'
 import '@fontsource/roboto';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import argentina1 from './countryImages/Argentina/buenosaires.jpg';
-import argentina2 from './countryImages/Argentina/bariloche.jpg';
-import argentina3 from './countryImages/Argentina/patagonia.jpg';
+import ecuador1 from './countryImages/Ecuador/banosvolcano.jpg';
+import ecuador2 from './countryImages/Ecuador/ecuador.jpg';
+import ecuador3 from './countryImages/Ecuador/galapogos.jpg';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export function Country1() {
+  export function Country3() {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -61,21 +61,21 @@ export function Country1() {
             <Card className={classes.root}>
       <CardHeader
         avatar={
-            <Avatar variant="square" src={flagImg1} className={classes.square} />
+            <Avatar variant="square" src={flagImg3} className={classes.square} />
           
         }
         
-        title="Argentina"
+        title="Ecuador"
         
       />
       <CardMedia
         className={classes.media}
-        image={argentina1}
-        title="Buenos Aires"
+        image={ecuador1}
+        title="Ecuador"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        Argentina, officially the largest Argentine Republic, is a country in the southern half of South America. It is the largest Spanish speaking nation in the world.
+        Ecuador, officially the Republic of Ecuador is a country in nortwestern South America, bordered by Columbia on the north, Peru on the east and south, and the Pacific Ocean on the west. Spanish is the official language and is spoken by the majority, though 13 Native languages are also recognized.
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -95,33 +95,33 @@ export function Country1() {
         <CardContent>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Capital:</Typography>
           <Typography paragraph>
-            Buenos Aires
+            Quito
           </Typography>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Handy Phrases:</Typography>
           <Typography variant="h5" paragraph>
-          "Hola, ¿cómo estás?"
+          "Bacan"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: Hey, How are you?
+            Translation: Cool!
           </Typography>
           <Typography variant="h5" paragraph>
-          "¿Qué es de tu vida?"
+          "Cojudo"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: How is life going?
+            Translation: Stupid or Silly
           </Typography>
           <Typography variant="h5" paragraph>
-          "Un picadito"
+          "Farra"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: A Football match
+            Translation: Party
           </Typography>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Places to Visit:</Typography>
 
           <AliceCarousel borderRaius="10" autoPlay autoPlayInterval="3000" >
-                <img src={argentina1} className="sliderimg"/>
-                <img src={argentina2} className="sliderimg"/>
-                <img src={argentina3} className="sliderimg"/>
+                <img src={ecuador1} className="sliderimg"/>
+                <img src={ecuador2} className="sliderimg"/>
+                <img src={ecuador3} className="sliderimg"/>
             </AliceCarousel>
         </CardContent>
       </Collapse>
@@ -129,4 +129,3 @@ export function Country1() {
         
     )
 }
-

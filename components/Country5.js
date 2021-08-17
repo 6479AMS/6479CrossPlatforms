@@ -2,13 +2,17 @@ import React, { useState, useEffect, Component } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 import './App.css'
-import flagImg1 from './flagImg/argentina.png'
+import flagImg5 from './flagImg/nepal.png'
 import '@fontsource/roboto';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import argentina1 from './countryImages/Argentina/buenosaires.jpg';
-import argentina2 from './countryImages/Argentina/bariloche.jpg';
-import argentina3 from './countryImages/Argentina/patagonia.jpg';
+import nepal1 from './countryImages/Nepal/annapurna.jpg';
+import nepal2 from './countryImages/Nepal/everest.jpg';
+import nepal3 from './countryImages/Nepal/kathmandu.jpg';
+
+
+
+
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -48,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export function Country1() {
+  export function Country5() {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -61,23 +65,23 @@ export function Country1() {
             <Card className={classes.root}>
       <CardHeader
         avatar={
-            <Avatar variant="square" src={flagImg1} className={classes.square} />
+            <Avatar variant="square" src={flagImg5} className={classes.square} />
           
         }
         
-        title="Argentina"
+        title="Nepal"
         
       />
       <CardMedia
         className={classes.media}
-        image={argentina1}
-        title="Buenos Aires"
+        image={nepal1}
+        title="Nepal"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        Argentina, officially the largest Argentine Republic, is a country in the southern half of South America. It is the largest Spanish speaking nation in the world.
+        Nepal, officially the Federal Republic of Nepal, is a landlocked country located in South Asia. It is mainly situated in the Himalayas, but also includes part of the Indo-Gangetic Plain, bordering Tibet to the north, and India in the south, east, and west. Nepal has a diverse geography, including fertile plains, forested hills, and eight of the world's highest mountain peaks, including Mount Everest.
         </Typography>
-      </CardContent>
+        </CardContent>
       <CardActions disableSpacing>
        
         <IconButton
@@ -95,33 +99,33 @@ export function Country1() {
         <CardContent>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Capital:</Typography>
           <Typography paragraph>
-            Buenos Aires
+            Kathmandu
           </Typography>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Handy Phrases:</Typography>
           <Typography variant="h5" paragraph>
-          "Hola, ¿cómo estás?"
+          "Namaste"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: Hey, How are you?
+            Translation: Good Morning!
           </Typography>
           <Typography variant="h5" paragraph>
-          "¿Qué es de tu vida?"
+          "Kasto hunu huncha"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: How is life going?
+            Translation: How are you?
           </Typography>
           <Typography variant="h5" paragraph>
-          "Un picadito"
+          "Dhanyabad"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: A Football match
+            Translation: Thank you
           </Typography>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Places to Visit:</Typography>
 
           <AliceCarousel borderRaius="10" autoPlay autoPlayInterval="3000" >
-                <img src={argentina1} className="sliderimg"/>
-                <img src={argentina2} className="sliderimg"/>
-                <img src={argentina3} className="sliderimg"/>
+                <img src={nepal1} className="sliderimg"/>
+                <img src={nepal2} className="sliderimg"/>
+                <img src={nepal3} className="sliderimg"/>
             </AliceCarousel>
         </CardContent>
       </Collapse>
@@ -129,4 +133,3 @@ export function Country1() {
         
     )
 }
-

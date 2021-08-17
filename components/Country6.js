@@ -2,13 +2,13 @@ import React, { useState, useEffect, Component } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 import './App.css'
-import flagImg1 from './flagImg/argentina.png'
+import flagImg6 from './flagImg/thailand.png'
 import '@fontsource/roboto';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import argentina1 from './countryImages/Argentina/buenosaires.jpg';
-import argentina2 from './countryImages/Argentina/bariloche.jpg';
-import argentina3 from './countryImages/Argentina/patagonia.jpg';
+import thailand1 from './countryImages/Thailand/bangkok.jpg';
+import thailand2 from './countryImages/Thailand/pattaya.jpg';
+import thailand3 from './countryImages/Thailand/phuket.jpg';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export function Country1() {
+  export function Country6() {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -61,23 +61,22 @@ export function Country1() {
             <Card className={classes.root}>
       <CardHeader
         avatar={
-            <Avatar variant="square" src={flagImg1} className={classes.square} />
+            <Avatar variant="square" src={flagImg6} className={classes.square} />
           
         }
         
-        title="Argentina"
+        title="Thailand"
         
       />
       <CardMedia
         className={classes.media}
-        image={argentina1}
-        title="Buenos Aires"
+        image={thailand1}
+        title="Thailand"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        Argentina, officially the largest Argentine Republic, is a country in the southern half of South America. It is the largest Spanish speaking nation in the world.
-        </Typography>
-      </CardContent>
+        Thailand, known formerly as Sian and officially as the Kingdom of Thailand, is a country in Southeast Asia. It is located in the centre of the Indochinese Peninsula, with a population of 70 million people. Thailand is bordered to the north by Myanmar and Laos, to the east by Laos and Cambodia, to the south by the Gulf of Thailand, and to the west by the Andaman Sea and the southern extremity of Myanmar. It has the second largest economy in SOutheast Asia.        </Typography>
+        </CardContent>
       <CardActions disableSpacing>
        
         <IconButton
@@ -95,33 +94,33 @@ export function Country1() {
         <CardContent>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Capital:</Typography>
           <Typography paragraph>
-            Buenos Aires
+            Bangkok
           </Typography>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Handy Phrases:</Typography>
           <Typography variant="h5" paragraph>
-          "Hola, ¿cómo estás?"
+          "SawatDii"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: Hey, How are you?
+            Translation: Hello!
           </Typography>
           <Typography variant="h5" paragraph>
-          "¿Qué es de tu vida?"
+          "Sabaaidii Mai?"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: How is life going?
+            Translation: How are you?
           </Typography>
           <Typography variant="h5" paragraph>
-          "Un picadito"
+          "Khop kun"
           </Typography>
           <Typography variant="caption" paragraph>
-            Translation: A Football match
+            Translation: Thank you
           </Typography>
           <Typography paragraph style={{ fontWeight: 'bold' }}>Places to Visit:</Typography>
 
           <AliceCarousel borderRaius="10" autoPlay autoPlayInterval="3000" >
-                <img src={argentina1} className="sliderimg"/>
-                <img src={argentina2} className="sliderimg"/>
-                <img src={argentina3} className="sliderimg"/>
+                <img src={thailand1} className="sliderimg"/>
+                <img src={thailand2} className="sliderimg"/>
+                <img src={thailand3} className="sliderimg"/>
             </AliceCarousel>
         </CardContent>
       </Collapse>
@@ -129,4 +128,3 @@ export function Country1() {
         
     )
 }
-
